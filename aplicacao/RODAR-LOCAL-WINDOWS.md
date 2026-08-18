@@ -1,4 +1,4 @@
-# Como Rodar o Gerenciador de Estoque Localmente (Windows)
+# Como Rodar o Premium Gás Localmente (Windows)
 
 Guia passo a passo para executar o sistema **100% local**, sem servidores em nuvem,
 em um computador com Windows.
@@ -12,7 +12,7 @@ em um computador com Windows.
 | Banco de dados | PostgreSQL 16+ | https://www.enterprisedb.com/downloads/postgresql |
 | Java | Temurin 21 LTS (instalador .msi) | https://adoptium.net/ |
 | Node.js | Versão LTS (vem com npm) | https://nodejs.org/ |
-| API | JAR pronto (`gerenciador-estoque-api-0.0.1-SNAPSHOT.jar`) | gerado no build (pasta `target/`) |
+| API | JAR pronto (`gerenciador-estoque-api-0.0.1-SNAPSHOT.jar`) | repositório `gerenciador_estoque_jar` |
 | Site | Pasta `gerenciador_estoque_app` | repositório do app |
 
 ---
@@ -21,15 +21,15 @@ em um computador com Windows.
 
 1. Baixe o instalador em https://www.enterprisedb.com/downloads/postgresql (versão 16 ou superior).
 2. Instale com as opções padrão.
-3. **Na tela de senha do usuário `postgres`, digite `postgres`** (é a senha que a API espera por padrão).
+3. **Na tela de senha do usuário `postgres`, digite `Ra28041996`** (é a senha que a API espera).
 4. Abra o **SQL Shell (psql)** ou o **pgAdmin** e crie o banco:
 
 ```sql
 CREATE DATABASE gerenciador_estoque;
 ```
 
-> O banco é criado vazio. As tabelas são criadas automaticamente pela API
-> (Flyway roda as migrations na primeira subida).
+> O banco é criado vazio. As tabelas e os **dados iniciais** (Gás P13 e Água Galão 20L)
+> são criados automaticamente pela API na primeira subida (Flyway roda as migrations V1-V8).
 
 ---
 
@@ -61,8 +61,9 @@ npm -v
 
 ## 4. Copiar o JAR da API para o PC
 
-1. Copie o arquivo `gerenciador-estoque-api-0.0.1-SNAPSHOT.jar` (cerca de 47 MB),
-   que fica na pasta `target/` do repositório da API após o build.
+1. Baixe o arquivo `gerenciador-estoque-api-0.0.1-SNAPSHOT.jar` (cerca de 47 MB) do
+   repositório **privado** `gerenciador_estoque_jar` (ou copie da pasta `target/` da API
+   após um build).
 2. Coloque em uma pasta local, por exemplo: `C:\gerenciador-estoque\`.
 
 > **Importante:** não extraia o arquivo. O JAR é executado diretamente
@@ -82,7 +83,7 @@ java -jar gerenciador-estoque-api-0.0.1-SNAPSHOT.jar
 - A API sobe na porta **8080**.
 - Deixe esta janela aberta enquanto usar o sistema.
 - O perfil `local` é o padrão: conecta em `localhost:5432` no banco `gerenciador_estoque`
-  com usuário `postgres` / senha `postgres`.
+  com usuário `postgres` / senha `Ra28041996` (já embutida no JAR de apresentação).
 
 ---
 

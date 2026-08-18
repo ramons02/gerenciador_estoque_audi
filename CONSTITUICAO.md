@@ -1,23 +1,24 @@
-# Constituição do Gerenciador de Estoque
+# Constituição do Premium Gás
 
 Este documento define os princípios não negociáveis do projeto. Toda decisão, código e
 documentação DEVE respeitar esta Constituição. Em caso de conflito, a Constituição prevalece
 sobre os demais documentos.
 
-**Versão:** 1.1.0
+**Versão:** 1.2.0
 **Ratificação:** 2026-08-17
-**Última emenda:** 2026-08-17
+**Última emenda:** 2026-08-18
 
 ---
 
 ## §I. Identidade do Projeto
 
-- **Projeto:** Gerenciador de Estoque - revenda de Gás (GLP) e Água com vasilhame retornável.
+- **Projeto:** Premium Gás - revenda de Gás (GLP) e Água com vasilhame retornável.
 - **Estrutura:** monorepo em repositórios irmãos:
   - `gerenciador_estoque_api` - backend.
   - `gerenciador_estoque_app` - frontend.
   - `gerenciador_estoque_infra` - infraestrutura e banco de dados.
   - `gerenciador_estoque_audi` - documentação e auditoria (requisitos, HUs, convenções, constituição).
+  - `gerenciador_estoque_jar` - JAR executável (privado, com credenciais embutidas).
 - **Fonte da verdade de comportamento:** `gerenciador_estoque_audi/requisitos/REQUISITOS.md`.
   Nenhuma tela, regra ou relatório pode divergir dele sem emendar primeiro a Constituição (§XIV).
 - **Fonte da verdade de entrega:** as HUs em `gerenciador_estoque_audi/HUs/`. Toda implementação
