@@ -3,17 +3,19 @@
 Guia passo a passo para executar o sistema **100% local**, sem servidores em nuvem,
 em um computador com Windows.
 
+**Simplicidade:** o JAR já traz a **API + o site embutidos** em um único arquivo.
+Não precisa de Node.js, npm nem terminal. É só duplo clique.
+
 ---
 
-## Requisitos
+## Requisitos (instalação única)
 
 | Componente | O que instalar | Link |
 |---|---|---|
 | Banco de dados | PostgreSQL 16+ | https://www.enterprisedb.com/downloads/postgresql |
 | Java | Temurin 21 LTS (instalador .msi) | https://adoptium.net/ |
-| Node.js | Versão LTS (vem com npm) | https://nodejs.org/ |
-| API | JAR pronto (`gerenciador-estoque-api-0.0.1-SNAPSHOT.jar`) | repositório `gerenciador_estoque_jar` |
-| Site | Pasta `gerenciador_estoque_app` | repositório do app |
+
+Não é necessário Node.js — o site vem dentro do JAR.
 
 ---
 
@@ -21,7 +23,7 @@ em um computador com Windows.
 
 1. Baixe o instalador em https://www.enterprisedb.com/downloads/postgresql (versão 16 ou superior).
 2. Instale com as opções padrão.
-3. **Na tela de senha do usuário `postgres`, digite `Ra28041996`** (é a senha que a API espera).
+3. **Na tela de senha do usuário `postgres`, digite `Ra28041996`** (é a senha que o JAR espera).
 4. Abra o **SQL Shell (psql)** ou o **pgAdmin** e crie o banco:
 
 ```sql
@@ -29,7 +31,7 @@ CREATE DATABASE gerenciador_estoque;
 ```
 
 > O banco é criado vazio. As tabelas e os **dados iniciais** (Gás P13 e Água Galão 20L)
-> são criados automaticamente pela API na primeira subida (Flyway roda as migrations V1-V8).
+> são criados automaticamente na primeira execução (Flyway roda as migrations V1-V8).
 
 ---
 
@@ -47,91 +49,49 @@ Deve exibir uma versão `21.x`.
 
 ---
 
-## 3. Instalar Node.js
+## 3. Copiar os arquivos do sistema para o PC
 
-1. Baixe em https://nodejs.org/ (versão **LTS**, instalador `.msi`) — o npm vem junto.
-2. Verifique no **Prompt de Comando**:
+1. Baixe do repositório `gerenciador_estoque_jar` (privado) os **2 arquivos**:
+   - `gerenciador-estoque-api-0.0.1-SNAPSHOT.jar` (cerca de 47 MB)
+   - `iniciar-premium-gas.bat`
+2. Coloque **os dois na mesma pasta**, por exemplo: `C:\PremiumGas\`.
 
-```
-node -v
-npm -v
-```
-
----
-
-## 4. Copiar o JAR da API para o PC
-
-1. Baixe o arquivo `gerenciador-estoque-api-0.0.1-SNAPSHOT.jar` (cerca de 47 MB) do
-   repositório **privado** `gerenciador_estoque_jar` (ou copie da pasta `target/` da API
-   após um build).
-2. Coloque em uma pasta local, por exemplo: `C:\gerenciador-estoque\`.
-
-> **Importante:** não extraia o arquivo. O JAR é executado diretamente
-> (ele é um zip internamente — extrair transforma em pastas e quebra a execução).
+> **Importante:** não extraia o JAR. Ele é executado diretamente
+> (internamente é um zip — extrair transforma em pastas e quebra a execução).
 
 ---
 
-## 5. Rodar a API
+## 4. Iniciar (duplo clique)
 
-No **Prompt de Comando**:
+1. Dê **duplo clique no `iniciar-premium-gas.bat`**.
+2. A janela do servidor abre **minimizada**.
+3. Quando tudo estiver pronto, o **navegador abre sozinho** no sistema
+   (`http://localhost:8080`).
 
-```
-cd C:\gerenciador-estoque
-java -jar gerenciador-estoque-api-0.0.1-SNAPSHOT.jar
-```
+Para fechar: feche a janela do servidor (ou pressione Ctrl+C nela).
 
-- A API sobe na porta **8080**.
-- Deixe esta janela aberta enquanto usar o sistema.
-- O perfil `local` é o padrão: conecta em `localhost:5432` no banco `gerenciador_estoque`
-  com usuário `postgres` / senha `Ra28041996` (já embutida no JAR de apresentação).
-
----
-
-## 6. Rodar o site (app)
-
-1. Copie a pasta `gerenciador_estoque_app` inteira para o Windows
-   (pode excluir `node_modules` e `dist`, se existirem — serão recriados).
-2. No **Prompt de Comando**:
-
-```
-cd C:\gerenciador-estoque-app
-npm install
-npm run dev
-```
-
-3. Abra o navegador em **http://localhost:5173**
-
-> Em desenvolvimento, o Vite redireciona as chamadas `/api` para
-> `http://localhost:8080` (proxy configurado no `vite.config.ts`), então o site
-> e a API conversam sem configuração extra. O CORS da API já libera
-> `http://localhost:5173` por padrão.
+> Alternativa manual: `java -jar gerenciador-estoque-api-0.0.1-SNAPSHOT.jar`
+> e abrir `http://localhost:8080` no navegador.
 
 ---
 
 ## Resumo do fluxo
 
-1. PostgreSQL rodando (porta 5432, banco `gerenciador_estoque` criado)
-2. `java -jar gerenciador-estoque-api-0.0.1-SNAPSHOT.jar` (porta 8080)
-3. `npm run dev` na pasta do app (porta 5173)
-4. Abrir **http://localhost:5173** no navegador
+1. PostgreSQL rodando (porta 5432, banco `gerenciador_estoque` criado, senha `Ra28041996`)
+2. Duplo clique no `iniciar-premium-gas.bat` (API + site na porta 8080)
+3. Navegador abre sozinho em `http://localhost:8080`
 
 ---
 
-## Dica: subir a API com um duplo clique
+## Atualização do sistema
 
-Crie um arquivo `iniciar-api.bat` na pasta do JAR com o conteúdo:
+Quando sair versão nova do JAR: baixe o JAR novo do repositório e **substitua o arquivo**
+na pasta `C:\PremiumGas\` (o `.bat` não muda). Próximo duplo clique já usa a versão nova.
 
-```bat
-@echo off
-java -jar gerenciador-estoque-api-0.0.1-SNAPSHOT.jar
-pause
-```
+## Solução de problemas
 
-E um `iniciar-app.bat` na pasta do app:
-
-```bat
-@echo off
-cd /d %~dp0
-npm run dev
-pause
-```
+| Problema | Causa provável | Solução |
+|---|---|---|
+| Janela fecha na hora | Java não instalado | Verifique `java -version` (passo 2) |
+| Navegador abre página de erro | Banco não conecta | Confira senha `Ra28041996` e banco `gerenciador_estoque` criados (passo 1) |
+| Porta 8080 já em uso | Outro programa usando a porta | Feche o outro programa ou reinicie o PC |
