@@ -5,13 +5,13 @@
 
 ## 1. Objetivo
 
-Como vendedor, quero cadastrar clientes com identificação e endereço, para poder registrar vendas fiado e controle de vasilhames em rua.
+Como vendedor, quero cadastrar clientes com identificação e endereço, para o controle de vasilhames em rua (comodato) e venda de vasilhame novo.
 
 ## 2. Critérios de Aceitação
 
 - **CT-001** O cadastro captura nome, telefone, endereço e (opcional) documento.
 - **CT-002** O sistema permite buscar o cliente por nome/telefone no momento da venda.
-- **CT-003** Venda fiado exige cliente cadastrado e selecionado (RGN-002); sem cliente, a opção fiado é bloqueada.
+- **CT-003** Cliente é obrigatório na venda de vasilhame novo; a forma Fiado não existe no sistema (RGN-002).
 
 ## 3. Requisitos vinculados
 

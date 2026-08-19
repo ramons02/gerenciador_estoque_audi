@@ -4,9 +4,9 @@ Este documento define os princípios não negociáveis do projeto. Toda decisão
 documentação DEVE respeitar esta Constituição. Em caso de conflito, a Constituição prevalece
 sobre os demais documentos.
 
-**Versão:** 1.2.0
+**Versão:** 1.3.0
 **Ratificação:** 2026-08-17
-**Última emenda:** 2026-08-18
+**Última emenda:** 2026-08-19
 
 ---
 
@@ -139,7 +139,7 @@ de "vasilhame", "galão" em vez de "carga") fora das telas de domínio quando o 
 
 ## §XIII. Segurança
 
-1. Venda fiado exige cliente cadastrado (RGN-002). Nunca flexibilizar para "acelerar".
+1. A forma de pagamento **Fiado não existe no sistema** (RGN-002). Não reativar sem emenda.
 2. Cancelamento/estorno registra quem, quando e o motivo. Sem exceção.
 
 ## §XIV. Emendas e Governança
@@ -160,3 +160,5 @@ de "vasilhame", "galão" em vez de "carga") fora das telas de domínio quando o 
 |---|---|---|---|
 | 1.0.0 | 2026-08-17 | - | Ratificação inicial. |
 | 1.1.0 | 2026-08-17 | - | Adicionado §I-A (artefatos spec/plan/task por HU) e §V.2. |
+| 1.2.0 | 2026-08-18 | - | Renomeado projeto para Premium Gás (§I) e inclusão do repositório jar. |
+| 1.3.0 | 2026-08-19 | - | Removida a regra de venda fiado (§XIII.1) e RGN-002 reescrito: Fiado não existe; cartão é forma única com acréscimo fixo configurável (RF-021/021-A/051/052). |

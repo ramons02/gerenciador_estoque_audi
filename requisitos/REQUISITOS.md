@@ -30,7 +30,7 @@ O sistema opera com **3 estados de estoque por produto**:
 | **RF-001** | O sistema deve permitir cadastrar produtos com a composição **Carga/Conteúdo** (ex.: Gás, Água) e **Vasilhame/Casco** (ex.: P13, P45, Galão 20L), combinando ambos na definição do item vendido (ex.: "Gás P13" = carga Gás + casco P13). |
 | **RF-002** | O sistema deve permitir cadastrar, por item, o **preço de custo** e o **preço de venda**. |
 | **RF-003** | O sistema deve permitir cadastrar o **limite mínimo de estoque** (alerta) por produto cheio. |
-| **RF-004** | O sistema deve permitir o cadastro de **clientes** (para vendas fiado/em haver) com dados de identificação e endereço. |
+| **RF-004** | O sistema deve permitir o cadastro de **clientes** com dados de identificação e endereço (necessário para venda de vasilhame novo e controle de vasilhames em rua). |
 | **RF-005** | O sistema deve permitir o cadastro de **fornecedores/distribuidoras** (ex.: Ultragaz, Nacional). |
 
 ### 2.2 Gestão de Entradas (Carregamento / Compra)
@@ -46,7 +46,8 @@ O sistema opera com **3 estados de estoque por produto**:
 | ID | Requisito |
 |---|---|
 | **RF-020** | O sistema deve permitir o **lançamento rápido de venda** com: produto, quantidade, data/hora e tipo de venda (**Balcão/Portaria** ou **Entrega**). |
-| **RF-021** | O sistema deve registrar a **forma de pagamento**: Dinheiro, PIX, Cartão (Crédito/Débito) ou **Fiado/Fiado Cliente** (com seleção do cliente). |
+| **RF-021** | O sistema deve registrar a **forma de pagamento**: **Dinheiro**, **PIX** ou **Cartão (Crédito/Débito como forma única)**. As formas aceitas são configuráveis (RF-052) e vendas não possuem mais a forma **Fiado**. |
+| **RF-021-A** | O sistema deve aplicar um **acréscimo fixo (R$ por unidade)** nas vendas pagas com **Cartão**, com valor configurável na tela de Configurações (RF-052). Dinheiro e PIX usam o preço normal. |
 | **RF-022** | Na venda por **Entrega**, o sistema deve **acrescentar automaticamente a taxa de entrega** ao total, com valor configurável por entrega. |
 | **RF-023** | O sistema deve tratar a **troca de vasilhame** na venda: **Venda Normal** — cliente entrega 1 vazio e leva 1 cheio (o vazio recebido entra no pátio). |
 | **RF-024** | O sistema deve tratar a **venda de vasilhame novo** — cliente compra o casco novo + a carga (sem devolução de vazio). |
@@ -78,7 +79,8 @@ O sistema opera com **3 estados de estoque por produto**:
 | ID | Requisito |
 |---|---|
 | **RF-050** | O sistema deve exibir no painel o **Total Faturado no Dia (R$)**. |
-| **RF-051** | O sistema deve exibir o **total por forma de pagamento** no dia (Dinheiro, PIX, Cartão e Fiado). |
+| **RF-051** | O sistema deve exibir o **total por forma de pagamento** no dia (**Dinheiro, PIX e Cartão** — crédito e débito somados em um único valor). |
+| **RF-052** | O sistema deve permitir na tela de **Configurações**: (a) definir as **formas de pagamento aceitas** (Dinheiro, PIX, Cartão); (b) definir o **acréscimo do cartão** em R$ por unidade; (c) definir a **taxa de entrega**. |
 | **RF-052** | O sistema deve exibir o **total de botijões/galões vendidos** no dia (por produto e total geral). |
 | **RF-053** | O sistema deve exibir no dashboard os **alertas de estoque baixo** ativos (RF-032). |
 
@@ -127,7 +129,7 @@ O sistema opera com **3 estados de estoque por produto**:
 | ID | Regra |
 |---|---|
 | **RGN-001** | Venda do tipo **Entrega** deve adicionar **taxa de entrega** ao total; o valor da taxa é configurável pelo administrador. |
-| **RGN-002** | **Fiado** é permitido apenas para **clientes cadastrados** (RF-004); venda fiado sem cliente é bloqueada. |
+| **RGN-002** | A forma de pagamento **Fiado não existe no sistema**. As formas aceitas são configuráveis (RF-052); **Cartão** sempre aplica o acréscimo configurado (RF-021-A). |
 | **RGN-003** | O vendedor pode aplicar **desconto** na venda apenas até um limite percentual configurado; acima disso exige aprovação do administrador. |
 | **RGN-004** | Ao atingir o **limite mínimo** de cheios (RF-003), o sistema emite alerta visual persistente até a nova entrada de caminhão. |
 | **RGN-005** | O **preço de venda** é validado para nunca ser inferior ao **preço de custo** no cadastro de produto (exceto se o administrador autorizar). |
