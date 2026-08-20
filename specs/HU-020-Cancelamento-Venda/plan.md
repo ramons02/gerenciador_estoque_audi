@@ -29,7 +29,7 @@ Gates avaliados contra a CONSTITUICAO.md:
 
 | Gate | Avaliação |
 |---|---|
-| §I-A Artefatos antes do código | spec.md, plan.md e task.md existem e são consistentes com a HU-020 - atendido |
+| §I-A Artefatos antes do código | spec.md, plan.md e tasks.md existem e são consistentes com a HU-020 - atendido |
 | §II Vocabulário | usa carga/vasilhame, cheio, vazio, pátio, em rua, troca - atendido |
 | §III Invariantes de estoque | reversão na mesma transação do cancelamento; estoque nunca negativo; nenhum estado parcial - atendido |
 | §V Orientado a requisitos | feature nasce da HU-020 com CTs vinculados a RGN-007/RNF-006/RNF-007 - atendido |
@@ -55,7 +55,7 @@ specs/HU-020-Cancelamento-Venda/
 ├── contracts/
 │   ├── api.md             # Contrato REST PUT /api/vendas/{id}/cancelar
 │   └── ui.md              # Contrato de UI do cancelamento no histórico
-└── task.md                # Checklist de CTs com status (pendente/em andamento/concluído)
+└── tasks.md                # Checklist de CTs com status (pendente/em andamento/concluído)
 ```
 
 ### Source Code (repository root)

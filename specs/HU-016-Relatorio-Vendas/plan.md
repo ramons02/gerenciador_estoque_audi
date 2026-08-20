@@ -29,7 +29,7 @@ Gates avaliados contra a CONSTITUICAO.md:
 
 | Gate | Avaliação |
 |---|---|
-| §I-A Artefatos antes do código | spec.md, plan.md e task.md existem e são consistentes com a HU-016 - atendido |
+| §I-A Artefatos antes do código | spec.md, plan.md e tasks.md existem e são consistentes com a HU-016 - atendido |
 | §II Vocabulário | usa carga/vasilhame, cheio, vazio, pátio; cabeçalhos seguem CONVENTIONS §10 - atendido |
 | §III Invariantes de estoque | leitura pura; invariantes preservadas pelas features de escrita - atendido |
 | §V Orientado a requisitos | feature nasce da HU-016 com CTs vinculados a RF-040/RF-041/RF-044/RGN-008 - atendido |
@@ -55,7 +55,7 @@ specs/HU-016-Relatorio-Vendas/
 ├── contracts/
 │   ├── api.md             # Contrato REST /api/vendas/relatorio e CSV
 │   └── ui.md              # Contrato de UI da seção Relatório de Vendas
-└── task.md                # Checklist de CTs com status (pendente/em andamento/concluído)
+└── tasks.md                # Checklist de CTs com status (pendente/em andamento/concluído)
 ```
 
 ### Source Code (repository root)

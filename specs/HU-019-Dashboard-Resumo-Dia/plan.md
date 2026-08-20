@@ -29,7 +29,7 @@ Gates avaliados contra a CONSTITUICAO.md:
 
 | Gate | Avaliação |
 |---|---|
-| §I-A Artefatos antes do código | spec.md, plan.md e task.md existem e são consistentes com a HU-019 - atendido |
+| §I-A Artefatos antes do código | spec.md, plan.md e tasks.md existem e são consistentes com a HU-019 - atendido |
 | §II Vocabulário | usa carga/vasilhame, cheio, pátio; total de vendidos expresso em vasilhames/unidades - atendido |
 | §III Invariantes de estoque | leitura pura; alerta usa saldo materializado, que respeita os três estados - atendido |
 | §V Orientado a requisitos | feature nasce da HU-019 com CTs vinculados a RF-050 a RF-053 - atendido |
@@ -55,7 +55,7 @@ specs/HU-019-Dashboard-Resumo-Dia/
 ├── contracts/
 │   ├── api.md             # Contrato REST /api/dashboard/resumo-dia
 │   └── ui.md              # Contrato de UI da tela inicial
-└── task.md                # Checklist de CTs com status (pendente/em andamento/concluído)
+└── tasks.md                # Checklist de CTs com status (pendente/em andamento/concluído)
 ```
 
 ### Source Code (repository root)

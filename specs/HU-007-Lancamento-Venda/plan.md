@@ -25,7 +25,7 @@ A feature lança a venda de balcão/entrega com produto, quantidade, tipo (Balc�
 
 | Gate | Verificação | Resultado |
 |---|---|---|
-| §I-A | spec.md, plan.md e task.md existem e são consistentes com a HU-007 antes de qualquer código | OK |
+| §I-A | spec.md, plan.md e tasks.md existem e são consistentes com a HU-007 antes de qualquer código | OK |
 | §II | Vocabulário canônico: venda, balcão, entrega, cheio, vazio, pátio, carga, vasilhame; sem sinônimos proibidos | OK |
 | §III | Invariantes: estoque nunca negativo; movimentação altera estoque e caixa na mesma transação; venda nunca apagada, apenas cancelada | OK |
 | §V | CT fechado exige prova (teste ou evidência registrada); plano precede o código | OK |

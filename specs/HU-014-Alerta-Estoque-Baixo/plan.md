@@ -29,7 +29,7 @@ Gates avaliados contra a CONSTITUICAO.md:
 
 | Gate | Avaliação |
 |---|---|
-| §I-A Artefatos antes do código | spec.md, plan.md e task.md existem e são consistentes com a HU-014 - atendido |
+| §I-A Artefatos antes do código | spec.md, plan.md e tasks.md existem e são consistentes com a HU-014 - atendido |
 | §II Vocabulário | usa carga/vasilhame, cheio, vazio, em rua, pátio; sem sinônimos proibidos - atendido |
 | §III Invariantes de estoque | leitura pura; invariantes preservadas pelas features de escrita - atendido |
 | §V Orientado a requisitos | feature nasce da HU-014 com CTs vinculados a RF-032/RF-053/RGN-004/RGN-009 - atendido |
@@ -54,7 +54,7 @@ specs/HU-014-Alerta-Estoque-Baixo/
 ├── contracts/
 │   ├── api.md             # Contrato REST /api/estoque/alertas
 │   └── ui.md              # Contrato de UI do alerta no dashboard e no painel
-└── task.md                # Checklist de CTs com status (pendente/em andamento/concluído)
+└── tasks.md                # Checklist de CTs com status (pendente/em andamento/concluído)
 ```
 
 ### Source Code (repository root)

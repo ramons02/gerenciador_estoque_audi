@@ -29,7 +29,7 @@ Gates avaliados contra a CONSTITUICAO.md:
 
 | Gate | Avaliação |
 |---|---|
-| §I-A Artefatos antes do código | spec.md, plan.md e task.md existem e são consistentes com a HU-011 - atendido |
+| §I-A Artefatos antes do código | spec.md, plan.md e tasks.md existem e são consistentes com a HU-011 - atendido |
 | §II Vocabulário | usa carga/vasilhame, cheio, vazio, em rua, pátio; sem sinônimos proibidos - atendido |
 | §III Invariantes de estoque | vasilhame em exatamente um estado; pátio nunca negativo; movimentação e estoque na mesma transação; nada apagado - atendido |
 | §V Orientado a requisitos | feature nasce da HU-011 com CTs vinculados a RF-027/RF-028 - atendido |
@@ -54,7 +54,7 @@ specs/HU-011-Recebimento-Vazios/
 ├── contracts/
 │   ├── api.md             # Contrato REST /api/devolucoes
 │   └── ui.md              # Contrato de UI da tela de recebimento
-└── task.md                # Checklist de CTs com status (pendente/em andamento/concluído)
+└── tasks.md                # Checklist de CTs com status (pendente/em andamento/concluído)
 ```
 
 ### Source Code (repository root)

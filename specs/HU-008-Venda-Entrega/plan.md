@@ -25,7 +25,7 @@ A feature soma automaticamente a taxa de entrega configurada ao total quando o t
 
 | Gate | Verificação | Resultado |
 |---|---|---|
-| §I-A | spec.md, plan.md e task.md existem e são consistentes com a HU-008 antes de qualquer código | OK |
+| §I-A | spec.md, plan.md e tasks.md existem e são consistentes com a HU-008 antes de qualquer código | OK |
 | §II | Vocabulário canônico: venda, entrega, balcão, taxa de entrega, carga, vasilhame; sem sinônimos proibidos | OK |
 | §III | Invariantes: estoque nunca negativo; movimentação altera estoque e caixa na mesma transação; venda nunca apagada | OK |
 | §V | CT fechado exige prova (teste ou evidência registrada); plano precede o código | OK |

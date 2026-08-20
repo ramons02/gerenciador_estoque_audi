@@ -34,7 +34,7 @@ venda (HU-007), que também vincula o vasilhame "em rua" ao cliente via `tab_cli
 | §I-A Artefatos por HU | spec.md, plan.md, research.md, data-model.md, contracts/ e quickstart.md existem antes de qualquer código | OK |
 | §II Vocabulário | Documentação usa Carga, Vasilhame, Cheio, Vazio, Em rua, Troca, Carregamento e Pátio | OK |
 | §III Invariantes de estoque | Feature não altera estoque; vincula "em rua" ao cliente sem mexer em saldo | OK |
-| §V Critério fechado = CT provado | Cada CT (CT-001 a CT-003) só fecha com prova registrada no task.md | OK |
+| §V Critério fechado = CT provado | Cada CT (CT-001 a CT-003) só fecha com prova registrada no tasks.md | OK |
 | §VI Proibido | Sem DELETE físico; sem Fiado (RGN-002); sem regra fora dos requisitos; sem termo não canônico | OK |
 | §VII Documentação | pt-BR, hífen normal, sem travessão | OK |
 | §X Rastreabilidade | RF-004, RF-028, RGN-002 e HU-004 referenciados em commits e doc do módulo | OK |

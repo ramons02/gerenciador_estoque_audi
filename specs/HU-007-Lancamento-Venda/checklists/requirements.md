@@ -1,4 +1,4 @@
-# Specification Quality Checklist: Cadastro de Carga e Vasilhame
+# Specification Quality Checklist: Lançamento Rápido de Venda (Balcão/Entrega)
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2026-08-20

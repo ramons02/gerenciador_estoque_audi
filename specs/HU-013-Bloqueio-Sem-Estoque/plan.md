@@ -29,7 +29,7 @@ Gates avaliados contra a CONSTITUICAO.md:
 
 | Gate | Avaliação |
 |---|---|
-| §I-A Artefatos antes do código | spec.md, plan.md e task.md existem e são consistentes com a HU-013 - atendido |
+| §I-A Artefatos antes do código | spec.md, plan.md e tasks.md existem e são consistentes com a HU-013 - atendido |
 | §II Vocabulário | usa carga/vasilhame, cheio, vazio, em rua, troca; sem sinônimos proibidos - atendido |
 | §III Invariantes de estoque | estoque nunca negativo; movimentação, estoque e caixa na mesma transação; nada apagado - atendido |
 | §V Orientado a requisitos | feature nasce da HU-013 com CTs vinculados a RF-031/RDN-005/RNF-008 - atendido |
@@ -54,7 +54,7 @@ specs/HU-013-Bloqueio-Sem-Estoque/
 ├── contracts/
 │   ├── api.md             # Contrato REST /api/vendas (bloqueio)
 │   └── ui.md              # Contrato de UI da tela de venda
-└── task.md                # Checklist de CTs com status (pendente/em andamento/concluído)
+└── tasks.md                # Checklist de CTs com status (pendente/em andamento/concluído)
 ```
 
 ### Source Code (repository root)

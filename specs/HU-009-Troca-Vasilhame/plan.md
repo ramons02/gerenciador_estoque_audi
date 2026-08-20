@@ -25,7 +25,7 @@ A feature registra a venda com troca de vasilhame (cliente entrega 1 vazio e lev
 
 | Gate | Verificação | Resultado |
 |---|---|---|
-| §I-A | spec.md, plan.md e task.md existem e são consistentes com a HU-009 antes de qualquer código | OK |
+| §I-A | spec.md, plan.md e tasks.md existem e são consistentes com a HU-009 antes de qualquer código | OK |
 | §II | Vocabulário canônico: troca, cheio, vazio, pátio, vasilhame, em rua; sem sinônimos proibidos ("permuta", "devolve e leva") | OK |
 | §III | Invariantes: todo vasilhame em exatamente um estado; estoque nunca negativo; movimentação altera estoque e caixa na mesma transação; venda nunca apagada | OK |
 | §V | CT fechado exige prova (teste ou evidência registrada); plano precede o código | OK |

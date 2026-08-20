@@ -25,7 +25,7 @@ A feature registra a chegada de caminhão (carregamento) com fornecedor, produto
 
 | Gate | Verificação | Resultado |
 |---|---|---|
-| §I-A | spec.md, plan.md e task.md existem e são consistentes com a HU-006 antes de qualquer código | OK |
+| §I-A | spec.md, plan.md e tasks.md existem e são consistentes com a HU-006 antes de qualquer código | OK |
 | §II | Vocabulário canônico: carregamento, cheio, vazio, pátio, carga, vasilhame; proibidos "chegada/compra" como termo técnico e sinônimos de carga/vasilhame | OK |
 | §III | Invariantes de estoque: todo vasilhame em exatamente um estado; estoque nunca negativo; movimentação altera estoque na mesma transação do registro; entrada nunca apagada, apenas estornada | OK |
 | §V | CT fechado exige prova (teste ou evidência registrada); plano precede o código | OK |

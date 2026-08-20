@@ -29,7 +29,7 @@ Gates avaliados contra a CONSTITUICAO.md:
 
 | Gate | Avaliação |
 |---|---|
-| §I-A Artefatos antes do código | spec.md, plan.md e task.md existem e são consistentes com a HU-015 - atendido |
+| §I-A Artefatos antes do código | spec.md, plan.md e tasks.md existem e são consistentes com a HU-015 - atendido |
 | §II Vocabulário | usa carga/vasilhame, cheio, vazio, pátio; cabeçalhos seguem CONVENTIONS §10 - atendido |
 | §III Invariantes de estoque | leitura pura; invariantes preservadas pelas features de escrita - atendido |
 | §V Orientado a requisitos | feature nasce da HU-015 com CTs vinculados a RF-040/RF-044/RNF-009 - atendido |
@@ -54,7 +54,7 @@ specs/HU-015-Exportacao-Relatorios/
 ├── contracts/
 │   ├── api.md             # Contrato REST /api/relatorios
 │   └── ui.md              # Contrato de UI do painel de relatórios
-└── task.md                # Checklist de CTs com status (pendente/em andamento/concluído)
+└── tasks.md                # Checklist de CTs com status (pendente/em andamento/concluído)
 ```
 
 ### Source Code (repository root)

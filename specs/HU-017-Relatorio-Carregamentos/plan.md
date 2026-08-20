@@ -29,7 +29,7 @@ Gates avaliados contra a CONSTITUICAO.md:
 
 | Gate | Avaliação |
 |---|---|
-| §I-A Artefatos antes do código | spec.md, plan.md e task.md existem e são consistentes com a HU-017 - atendido |
+| §I-A Artefatos antes do código | spec.md, plan.md e tasks.md existem e são consistentes com a HU-017 - atendido |
 | §II Vocabulário | usa carga/vasilhame, cheio, vazio, pátio, carregamento, fornecedor; cabeçalhos seguem CONVENTIONS §10 - atendido |
 | §III Invariantes de estoque | leitura pura; invariantes (RDN-003, RDN-009) preservadas pelas features de escrita - atendido |
 | §V Orientado a requisitos | feature nasce da HU-017 com CTs vinculados a RF-040/RF-042/RF-044 - atendido |
@@ -55,7 +55,7 @@ specs/HU-017-Relatorio-Carregamentos/
 ├── contracts/
 │   ├── api.md             # Contrato REST /api/carregamentos/relatorio e CSV
 │   └── ui.md              # Contrato de UI da seção Relatório de Carregamentos
-└── task.md                # Checklist de CTs com status (pendente/em andamento/concluído)
+└── tasks.md                # Checklist de CTs com status (pendente/em andamento/concluído)
 ```
 
 ### Source Code (repository root)

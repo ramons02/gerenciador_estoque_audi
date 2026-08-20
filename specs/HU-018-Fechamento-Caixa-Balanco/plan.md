@@ -29,7 +29,7 @@ Gates avaliados contra a CONSTITUICAO.md:
 
 | Gate | Avaliação |
 |---|---|
-| §I-A Artefatos antes do código | spec.md, plan.md e task.md existem e são consistentes com a HU-018 - atendido |
+| §I-A Artefatos antes do código | spec.md, plan.md e tasks.md existem e são consistentes com a HU-018 - atendido |
 | §II Vocabulário | usa carga/vasilhame, cheio, vazio, pátio, carregamento; cabeçalhos seguem CONVENTIONS §10 - atendido |
 | §III Invariantes de estoque | balanço reflete os três estados; fechamento não altera estoque; invariantes preservadas - atendido |
 | §V Orientado a requisitos | feature nasce da HU-018 com CTs vinculados a RF-043/RF-044/RGN-006 - atendido |
@@ -55,7 +55,7 @@ specs/HU-018-Fechamento-Caixa-Balanco/
 ├── contracts/
 │   ├── api.md             # Contrato REST /api/caixa e /api/relatorios/balanco
 │   └── ui.md              # Contrato de UI do fechamento e do balanço
-└── task.md                # Checklist de CTs com status (pendente/em andamento/concluído)
+└── tasks.md                # Checklist de CTs com status (pendente/em andamento/concluído)
 ```
 
 ### Source Code (repository root)

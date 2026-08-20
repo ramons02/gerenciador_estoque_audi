@@ -25,7 +25,7 @@ A feature vende vasilhame novo (casco + carga, sem devolução de vazio): o pre�
 
 | Gate | Verificação | Resultado |
 |---|---|---|
-| §I-A | spec.md, plan.md e task.md existem e são consistentes com a HU-010 antes de qualquer código | OK |
+| §I-A | spec.md, plan.md e tasks.md existem e são consistentes com a HU-010 antes de qualquer código | OK |
 | §II | Vocabulário canônico: vasilhame novo, casco, carga, cheio, em rua, comodato; sem sinônimos proibidos | OK |
 | §III | Invariantes: todo vasilhame em exatamente um estado (em rua); estoque nunca negativo; movimentação altera estoque e caixa na mesma transação; venda nunca apagada | OK |
 | §V | CT fechado exige prova (teste ou evidência registrada); plano precede o código | OK |
