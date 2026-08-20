@@ -1,29 +1,99 @@
-# Plano de Implementação - HU-016 — Relatório de Vendas (Diário/Mensal)
+# Implementation Plan: Relatório de Vendas (Diário/Mensal)
 
-**HU de origem:** HU-016
-**Status:** Em elaboração
+**HU**: HU-016 - Relatório de Vendas (Diário/Mensal)
 
-## 1. Escopo
+**Branch**: `HU-016-Relatorio-Vendas` | **Date**: 2026-08-20 | **Spec**: [spec.md](./spec.md)
+**Input**: Feature specification from `/specs/HU-016-Relatorio-Vendas/spec.md`
 
-- 3 critérios de aceitação a implementar e provar.
-- Requisitos vinculados: RF-041, RF-040, RF-044, RGN-008.
+## Summary
 
-## 2. Decisões de arquitetura
+Requisito primário: gerar o relatório de vendas por período com as colunas padrão - Data/Hora, Produto, Qtd, Valor Unitário, Total (R$), Forma de Pagamento, Tipo (Balcão/Entrega) - (RF-041, CT-001), filtrando por Hoje, Últimos 7 dias, Mês Atual ou período personalizado (RF-040, CT-002), com exportação em Excel/CSV (RF-044, CT-003) e discriminação de forma de pagamento e tipo para conferência do caixa físico (RGN-008).
 
-- **API (Java/Spring Boot):** módulo em `com.gerenciador.estoque.business.*`, herdando
-  `core` (BaseModel, BaseRepository, BaseService) para reuso (SOLID).
-- **Banco (PostgreSQL):** migration Flyway `V<N>__*.sql` forward-only (CONVENTIONS §8).
-- **App (React/TypeScript):** tela por HU em pasta de feature, cliente HTTP tipado.
+Abordagem técnica: módulo `venda` na API com `GET /api/vendas/relatorio?periodo=HOJE|7DIAS|MES|PERSONALIZADO&inicio=&fim=` (RF-040, RF-041), consulta de leitura em `tab_venda` + `tab_venda_item` filtrando `status = ATIVA` (vendas canceladas excluídas, FR-005/RGN-007), resposta JSON para a tela com linhas e total do período. A exportação CSV reutiliza o endpoint consolidado `GET /api/relatorios/vendas` definido na HU-015, com BOM UTF-8 e colunas EXATAS de CONVENTIONS §10 (RF-044, CT-003, RNF-009). No app, a seção Relatório de Vendas em `src/features/relatorio/` com seletor de período e botão de exportação (CT-002, CT-003).
 
-## 3. Etapas
+## Technical Context
 
-1. Modelagem de dados (migration Flyway).
-2. Entidade + Repository + Service + Controller na API.
-3. Testes de regra de negócio (caixa/estoque prioridade máxima).
-4. Tela no app consumindo a API.
-5. Prova dos critérios de aceitação (CT) e evidência.
+**Language/Version**: Java 21 + Spring Boot 3.x (API); React 18 + TypeScript 5.x (app)
+**Primary Dependencies**: Spring Data JPA, Flyway, Lombok (API); React, Vite, axios, react-router (app)
+**Storage**: PostgreSQL único + Flyway forward-only; tabelas `tab_*`, sequências `seq_*`, colunas snake_case pt-BR
+**Testing**: JUnit 5 + Mockito (Service/Controller); integração com @SpringBootTest; Vitest + React Testing Library (app)
+**Target Platform**: navegador web (SPA) + REST API
+**Project Type**: full-stack web: REST API + SPA
+**Performance Goals**: consulta do relatório em menos de 2 segundos (RNF-003); exportação de período de até 12 meses gerada em poucos segundos (RNF-010)
+**Constraints**: colunas exatas de CONVENTIONS §10 (RF-041); vendas canceladas excluídas da consolidação (RGN-007); período personalizado exige fim >= inicio (Edge Case); período sem vendas retorna lista vazia sem erro (Edge Case); leitura pura, sem escrita; sem DELETE de movimento (RNF-007)
+**Scale/Scope**: revenda única, 1-5 usuários simultâneos, dados de 12 meses (RNF-010), milhares de linhas por período
 
-## 4. Definição de pronto
+## Constitution Check
 
-- Todos os CTs provados com evidência registrada (Constituição §V.2).
-- Sem `DELETE` físico em movimento; exclusão lógica via `ativo = false`.
+Gates avaliados contra a CONSTITUICAO.md:
+
+| Gate | Avaliação |
+|---|---|
+| §I-A Artefatos antes do código | spec.md, plan.md e task.md existem e são consistentes com a HU-016 - atendido |
+| §II Vocabulário | usa carga/vasilhame, cheio, vazio, pátio; cabeçalhos seguem CONVENTIONS §10 - atendido |
+| §III Invariantes de estoque | leitura pura; invariantes preservadas pelas features de escrita - atendido |
+| §V Orientado a requisitos | feature nasce da HU-016 com CTs vinculados a RF-040/RF-041/RF-044/RGN-008 - atendido |
+| §VI Proibido | sem escrita fora de transação (nenhuma escrita); vocabulário respeitado - atendido |
+| §VII Documentação | pt-BR, hífen normal, sem travessão - atendido |
+| §X Rastreabilidade | RF-040, RF-041, RF-044, RGN-008, CT-001 a CT-003 referenciados - atendido |
+| §XI Qualidade | CT provado por teste ou evidência; formato validado contra CONVENTIONS §10 - atendido |
+| §XIII.2 Auditoria de cancelamento | feature não realiza cancelamento; consulta apenas vendas ATIVA e preserva o rastro - atendido |
+
+**GATE: PASS**
+
+## Project Structure
+
+### Documentation (this feature)
+
+```text
+specs/HU-016-Relatorio-Vendas/
+├── spec.md                # Especificação: objetivo, CTs, requisitos vinculados
+├── plan.md                # Este arquivo (fase de plano)
+├── research.md            # Fase 0: decisões técnicas e alternativas
+├── data-model.md          # Fase 1: modelo de dados da feature
+├── quickstart.md          # Fase 1: validação end-to-end dos CTs
+├── contracts/
+│   ├── api.md             # Contrato REST /api/vendas/relatorio e CSV
+│   └── ui.md              # Contrato de UI da seção Relatório de Vendas
+└── task.md                # Checklist de CTs com status (pendente/em andamento/concluído)
+```
+
+### Source Code (repository root)
+
+```text
+gerenciador_estoque_api/
+└── src/
+    ├── main/java/com/gerenciador/estoque/venda/
+    │   ├── controller/VendaController.java
+    │   ├── service/
+    │   │   ├── RelatorioVendaService.java          # filtro por período + status ATIVA
+    │   │   └── VendaConsultaService.java           # detalhe de venda para a tela
+    │   ├── repository/VendaRepository.java         # query do relatório (projection)
+    │   └── dto/ (PeriodoRequest, LinhaRelatorioVendaResponse, RelatorioVendaResponse)
+    └── test/java/com/gerenciador/estoque/venda/
+        ├── RelatorioVendaServiceTest.java          # filtro, exclusão de cancelada
+        ├── VendaControllerTest.java                # validação de período
+        └── RelatorioVendaIntegrationTest.java      # banco real, colunas exatas
+
+gerenciador_estoque_app/
+└── src/
+    ├── features/relatorio/
+    │   ├── PainelRelatoriosPage.tsx                # seletor de período compartilhado
+    │   ├── components/ (SeletorPeriodo, BotaoExportar, TabelaRelatorioVendas)
+    │   └── types.ts                                # tipos do relatório de vendas
+    ├── api/
+    │   ├── vendasApi.ts                            # GET /api/vendas/relatorio
+    │   └── relatoriosApi.ts                        # exportação CSV (HU-015)
+    └── utils/
+        └── downloadArquivo.ts                      # dispara download do CSV
+```
+
+**Structure Decision**: monorepo com 5 repositórios irmãos: `gerenciador_estoque_api`, `gerenciador_estoque_app`, `gerenciador_estoque_infra`, `gerenciador_estoque_audi` (este diretório) e `gerenciador_estoque_jar` (Constituição §I). A feature é implementada na API no módulo `com.gerenciador.estoque.venda` (CONVENTIONS §4) e no app em `src/features/relatorio/` (CONVENTIONS §7). A exportação CSV não é duplicada: o endpoint `GET /api/relatorios/vendas` da HU-015 é o contrato canônico de exportação, garantindo colunas exatas (CONVENTIONS §10, RF-041/RF-044).
+
+## Complexity Tracking
+
+Nenhuma violação dos gates da Constituição detectada; nada a justificar.
+
+| Violation | Why Needed | Simpler Alternative Rejected Because |
+|---|---|---|
+| - | - | - |

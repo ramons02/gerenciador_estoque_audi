@@ -26,17 +26,18 @@ O vendedor seleciona o produto, informa a quantidade, o tipo de venda (Balcão o
 ---
 
 ### User Story 2 - Aplicar as formas de pagamento e o acréscimo do cartão (Priority: P2)
-Na venda, aparecem apenas as formas de pagamento habilitadas nas Configurações (Dinheiro, PIX, Cartão). Vendas pagas com Cartão somam o acréscimo configurado (R$ por unidade) ao preço; Dinheiro e PIX usam o preço normal.
+Na venda, aparecem apenas as formas de pagamento habilitadas nas Configurações (Dinheiro, PIX, Cartão). Vendas pagas com Cartão somam o acréscimo configurado (R$ por unidade) ao preço, somente para produtos de carga Gás; produtos de carga Água usam o preço normal em qualquer forma de pagamento, e Dinheiro e PIX usam o preço normal em todos os produtos.
 
-**Why this priority**: Define o valor efetivamente cobrado por forma de pagamento — erro aqui significa caixa divergente e perda de margem; a forma Fiado não existe no sistema.
+**Why this priority**: Define o valor efetivamente cobrado por forma de pagamento - erro aqui significa caixa divergente e perda de margem; a forma Fiado não existe no sistema.
 
-**Independent Test**: Configurar as formas aceitas e o acréscimo do cartão, lançar a mesma venda em cada forma e conferir que apenas as habilitadas aparecem e que o Cartão aplica o acréscimo.
+**Independent Test**: Configurar as formas aceitas e o acréscimo do cartão, lançar a mesma venda em cada forma, com produto de carga Gás e de carga Água, e conferir que apenas as habilitadas aparecem, que o Cartão aplica o acréscimo somente ao Gás e que a Água mantém o preço normal.
 
 **Acceptance Scenarios**:
 
 1. **Given** as Configurações com Dinheiro, PIX e Cartão habilitados, **When** o vendedor abre a lista de formas de pagamento, **Then** apenas as formas habilitadas aparecem.
-2. **Given** um acréscimo de cartão configurado em R$ por unidade, **When** a venda é paga com Cartão, **Then** o total soma o acréscimo por unidade vendida.
-3. **Given** a mesma venda paga com Dinheiro ou PIX, **When** o total é calculado, **Then** é usado o preço normal, sem acréscimo.
+2. **Given** um acréscimo de cartão configurado em R$ por unidade, **When** uma venda de produto de carga Gás é paga com Cartão, **Then** o total soma o acréscimo por unidade vendida.
+3. **Given** uma venda de produto de carga Gás paga com Dinheiro ou PIX, **When** o total é calculado, **Then** é usado o preço normal, sem acréscimo.
+4. **Given** uma venda de produto de carga Água paga com Cartão, **When** o total é calculado, **Then** é usado o preço normal, sem acréscimo.
 
 ---
 
@@ -66,26 +67,26 @@ O sistema bloqueia a venda quando a quantidade solicitada é maior que o estoque
 - **FR-001**: O sistema deve lançar a venda exigindo produto, quantidade, tipo (Balcão/Entrega) e forma de pagamento.
 - **FR-002**: O sistema deve calcular automaticamente o total como quantidade × preço de venda.
 - **FR-003**: O sistema deve exibir apenas as formas de pagamento habilitadas nas Configurações (Dinheiro, PIX, Cartão).
-- **FR-004**: O sistema deve somar o acréscimo configurado (R$ por unidade) ao preço nas vendas pagas com Cartão; Dinheiro e PIX usam o preço normal.
+- **FR-004**: O sistema deve somar o acréscimo configurado (R$ por unidade) ao preço nas vendas pagas com Cartão, somente para produtos de carga Gás; produtos de carga Água usam o preço normal em qualquer forma de pagamento (Dinheiro, PIX ou Cartão), e Dinheiro e PIX usam o preço normal em todos os produtos.
 - **FR-005**: O sistema deve bloquear a venda quando a quantidade solicitada exceder o estoque de cheios.
 - **FR-006**: O sistema deve registrar data/hora e o usuário responsável em cada venda lançada.
 
 ### Key Entities
 
 - **Venda**: lançamento com produto, quantidade, tipo (Balcão/Entrega), forma de pagamento, total calculado, data/hora e usuário responsável.
-- **Forma de Pagamento**: Dinheiro, PIX ou Cartão (Crédito/Débito como forma única), com habilitação configurável e acréscimo próprio para Cartão.
+- **Forma de Pagamento**: Dinheiro, PIX ou Cartão (Crédito/Débito como forma única), com habilitação configurável e acréscimo próprio para Cartão (aplicado somente a produtos de carga Gás).
 
 ## Success Criteria *(mandatory)*
 
 ### Measurable Outcomes
 
 - **SC-001**: 100% dos lançamentos concluídos em poucos segundos (meta de usabilidade da portaria).
-- **SC-002**: 100% dos totais calculados corretamente (quantidade × preço, com acréscimo quando Cartão).
+- **SC-002**: 100% dos totais calculados corretamente (quantidade × preço, com acréscimo quando Cartão em produto de carga Gás).
 - **SC-003**: Zero vendas confirmadas com estoque negativo ou acima do disponível.
 - **SC-004**: 100% das vendas registram data/hora e usuário responsável.
 
 ## Assumptions
 
-- As Configurações definem as formas de pagamento aceitas e o acréscimo do cartão (RF-052).
+- As Configurações definem as formas de pagamento aceitas e o acréscimo do cartão (RF-052); o acréscimo do cartão é aplicado somente a produtos de carga Gás (RF-021-A).
 - A forma Fiado não existe no sistema (RGN-002).
 - O preço de venda é cadastrado por produto (RF-002).

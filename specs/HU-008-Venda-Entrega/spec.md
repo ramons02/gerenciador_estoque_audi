@@ -50,7 +50,7 @@ O relatório de vendas discrimina o tipo de cada venda (Balcão/Entrega) e exibe
 
 ### Edge Cases
 
-- Taxa de entrega configurada como zero (entrega gratuita) — o total segue a regra, sem acréscimo.
+- Taxa de entrega configurada como zero (entrega gratuita) - o total segue a regra, sem acréscimo de entrega (o acréscimo do cartão, se aplicável, é regra da HU-007: somente carga Gás).
 - Taxa alterada após vendas do dia já lançadas — apenas as novas vendas usam o novo valor.
 - Venda do tipo Entrega lançada sem taxa configurada — o sistema deve exigir a configuração antes de permitir a conclusão.
 
