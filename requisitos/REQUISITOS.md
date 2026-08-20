@@ -47,7 +47,7 @@ O sistema opera com **3 estados de estoque por produto**:
 |---|---|
 | **RF-020** | O sistema deve permitir o **lançamento rápido de venda** com: produto, quantidade, data/hora e tipo de venda (**Balcão/Portaria** ou **Entrega**). |
 | **RF-021** | O sistema deve registrar a **forma de pagamento**: **Dinheiro**, **PIX** ou **Cartão (Crédito/Débito como forma única)**. As formas aceitas são configuráveis (RF-052) e vendas não possuem mais a forma **Fiado**. |
-| **RF-021-A** | O sistema deve aplicar um **acréscimo fixo (R$ por unidade)** nas vendas pagas com **Cartão**, com valor configurável na tela de Configurações (RF-052). Dinheiro e PIX usam o preço normal. |
+| **RF-021-A** | O sistema deve aplicar um **acréscimo fixo (R$ por unidade)** nas vendas pagas com **Cartão**, com valor configurável na tela de Configurações (RF-052). O acréscimo se aplica **somente aos produtos de carga Gás**; produtos de carga Água usam o **preço normal** em qualquer forma de pagamento (Dinheiro, PIX ou Cartão). Dinheiro e PIX usam o preço normal em todos os produtos. |
 | **RF-022** | Na venda por **Entrega**, o sistema deve **acrescentar automaticamente a taxa de entrega** ao total, com valor configurável por entrega. |
 | **RF-023** | O sistema deve tratar a **troca de vasilhame** na venda: **Venda Normal** — cliente entrega 1 vazio e leva 1 cheio (o vazio recebido entra no pátio). |
 | **RF-024** | O sistema deve tratar a **venda de vasilhame novo** — cliente compra o casco novo + a carga (sem devolução de vazio). |
@@ -80,7 +80,7 @@ O sistema opera com **3 estados de estoque por produto**:
 |---|---|
 | **RF-050** | O sistema deve exibir no painel o **Total Faturado no Dia (R$)**. |
 | **RF-051** | O sistema deve exibir o **total por forma de pagamento** no dia (**Dinheiro, PIX e Cartão** — crédito e débito somados em um único valor). |
-| **RF-052** | O sistema deve permitir na tela de **Configurações**: (a) definir as **formas de pagamento aceitas** (Dinheiro, PIX, Cartão); (b) definir o **acréscimo do cartão** em R$ por unidade; (c) definir a **taxa de entrega**. |
+| **RF-052** | O sistema deve permitir na tela de **Configurações**: (a) definir as **formas de pagamento aceitas** (Dinheiro, PIX, Cartão); (b) definir o **acréscimo do cartão** em R$ por unidade (aplicado aos produtos de carga Gás, conforme RF-021-A); (c) definir a **taxa de entrega**. |
 | **RF-052** | O sistema deve exibir o **total de botijões/galões vendidos** no dia (por produto e total geral). |
 | **RF-053** | O sistema deve exibir no dashboard os **alertas de estoque baixo** ativos (RF-032). |
 
@@ -129,7 +129,7 @@ O sistema opera com **3 estados de estoque por produto**:
 | ID | Regra |
 |---|---|
 | **RGN-001** | Venda do tipo **Entrega** deve adicionar **taxa de entrega** ao total; o valor da taxa é configurável pelo administrador. |
-| **RGN-002** | A forma de pagamento **Fiado não existe no sistema**. As formas aceitas são configuráveis (RF-052); **Cartão** sempre aplica o acréscimo configurado (RF-021-A). |
+| **RGN-002** | A forma de pagamento **Fiado não existe no sistema**. As formas aceitas são configuráveis (RF-052); **Cartão** sempre aplica o acréscimo configurado (RF-021-A) **aos produtos de carga Gás**; produtos de carga Água seguem o preço normal em qualquer forma de pagamento. |
 | **RGN-003** | O vendedor pode aplicar **desconto** na venda apenas até um limite percentual configurado; acima disso exige aprovação do administrador. |
 | **RGN-004** | Ao atingir o **limite mínimo** de cheios (RF-003), o sistema emite alerta visual persistente até a nova entrada de caminhão. |
 | **RGN-005** | O **preço de venda** é validado para nunca ser inferior ao **preço de custo** no cadastro de produto (exceto se o administrador autorizar). |

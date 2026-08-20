@@ -4,9 +4,9 @@ Este documento define os princípios não negociáveis do projeto. Toda decisão
 documentação DEVE respeitar esta Constituição. Em caso de conflito, a Constituição prevalece
 sobre os demais documentos.
 
-**Versão:** 1.3.0
+**Versão:** 1.3.1
 **Ratificação:** 2026-08-17
-**Última emenda:** 2026-08-19
+**Última emenda:** 2026-08-20
 
 ---
 
@@ -162,3 +162,4 @@ de "vasilhame", "galão" em vez de "carga") fora das telas de domínio quando o 
 | 1.1.0 | 2026-08-17 | - | Adicionado §I-A (artefatos spec/plan/task por HU) e §V.2. |
 | 1.2.0 | 2026-08-18 | - | Renomeado projeto para Premium Gás (§I) e inclusão do repositório jar. |
 | 1.3.0 | 2026-08-19 | - | Removida a regra de venda fiado (§XIII.1) e RGN-002 reescrito: Fiado não existe; cartão é forma única com acréscimo fixo configurável (RF-021/021-A/051/052). |
+| 1.3.1 | 2026-08-20 | - | RF-021-A/RGN-002 esclarecidos: o acréscimo do cartão se aplica somente a produtos de carga Gás; produtos de carga Água usam o preço normal em qualquer forma de pagamento (Dinheiro, PIX ou Cartão). |

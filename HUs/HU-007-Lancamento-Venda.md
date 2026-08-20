@@ -7,7 +7,7 @@
 - **CT-001** O lançamento exige: produto, quantidade, tipo (Balcão/Entrega) e forma de pagamento.
 - **CT-002** O total é calculado automaticamente (qtd × preço de venda).
 - **CT-003** Formas de pagamento: Dinheiro, PIX e Cartão (Crédito/Débito como forma única). Apenas as formas habilitadas nas Configurações aparecem (RF-052).
-- **CT-003-A** Venda paga com Cartão soma o acréscimo configurado (R$ por unidade) ao preço; Dinheiro e PIX usam o preço normal (RF-021-A).
+- **CT-003-A** Venda paga com Cartão soma o acréscimo configurado (R$ por unidade) ao preço, somente para produtos de carga Gás; produtos de carga Água usam o preço normal em qualquer forma de pagamento (Dinheiro, PIX ou Cartão) (RF-021-A).
 - **CT-004** Venda com quantidade maior que o estoque de cheios é bloqueada (RF-031).
 - **CT-005** O lançamento completo deve ser executável em poucos segundos (RNF-001).
 - **CT-006** A venda registra data/hora e usuário responsável.
